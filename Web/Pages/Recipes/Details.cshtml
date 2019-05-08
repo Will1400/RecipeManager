@@ -1,0 +1,32 @@
+﻿@page "{id:int}"
+@model Web.Pages.Recipes.DetailsModel
+@{
+    ViewData["Title"] = Model.Recipe.Name;
+}
+
+<h1>@Model.Recipe.Name</h1>
+
+<p>@Model.Recipe.Description</p>
+
+<h2>Ingredients</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Unit</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Recipe.Ingredients)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.Unit)</td>
+                <td>@item.Amount</td>
+            </tr>
+        }
+    </tbody>
+</table>
