@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+@model Web.Pages.Ingredients.DeleteModel
+@using  Entities
+@{
+    ViewData["Title"] = $"Delete {Model.Ingredient.Name}";
+}
+
+<h1>Confirm Deletion Of @Model.Ingredient.Name</h1>
+
+<h4 class="text-danger">Warning! <br /> @Model.Ingredient.Name Will be deleted from ingredients AND any recipes</h4>
+
+<form method="post">
+    <input asp-for="Ingredient.Id" type="hidden" />
+
+    <div class="form-group">
+        <label>Name: @Model.Ingredient.Name</label>
+        <input asp-for="Ingredient.Name" type="hidden"/>
+    </div>
+    <div class="form-group">
+        <label>Type: @Model.Ingredient.Type</label>
+        <input asp-for="Ingredient.Type" type="hidden"/>
+    </div>
+
+    <input type="submit" value="Delete" class="btn btn-danger"/>
+</form>
