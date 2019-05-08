@@ -64,12 +64,12 @@ namespace DataAccess
 
         public int NewIngredient(Ingredient ingredient)
         {
-            return ExecuteNonQueryScalar($"exec dbo.NewIngredient '{ingredient.Name}', {ingredient.Type}");
+            return ExecuteNonQuery($"exec dbo.NewIngredient '{ingredient.Name}', {(int)ingredient.Type}");
         }
 
         public int UpdateIngredient(Ingredient ingredient)
         {
-            return ExecuteNonQuery($"exec dbo.UpdateIngredient {ingredient.Id}, '{ingredient.Name}', {ingredient.Type}");
+            return ExecuteNonQuery($"exec dbo.UpdateIngredient {ingredient.Id}, '{ingredient.Name}', {(int)ingredient.Type}");
         }
 
     }

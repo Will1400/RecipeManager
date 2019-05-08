@@ -58,18 +58,16 @@
 
 --end
 
---create proc dbo.NewIngredient
---@Name varchar(max),
---@Type int
+--alter proc dbo.newingredient
+--@name varchar(max),
+--@type int
 --as
 --begin
---set nocount on;
 
---insert into Ingredients(Name, Type)
---output inserted.Id
+--insert into ingredients(name, type)
 --values
---	(@Name, @Type)
-
+--	(@name, @type)
+--end
 
 --create proc dbo.UpdateIngredient
 --@IngredientId int,

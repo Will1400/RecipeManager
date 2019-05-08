@@ -1,0 +1,25 @@
+﻿@page
+@model Web.Pages.Ingredients.CreateModel
+@using Entities
+@{
+    ViewData["Title"] = "New Ingredient";
+}
+
+<h1>Create Ingredient</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Ingredient.Name"></label>
+        <input asp-for="Ingredient.Name" />
+        <span asp-validation-for="Ingredient.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ingredient.Type"></label>
+        <select asp-for="Ingredient.Type" asp-items="@Html.GetEnumSelectList<IngredientType>()">
+            <option value="-1">Select Type</option>
+        </select>
+        <span asp-validation-for="Ingredient.Type"></span>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Create" />
+</form>
