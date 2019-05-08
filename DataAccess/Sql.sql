@@ -97,6 +97,26 @@
 
 
 
+--create proc dbo.GetIngredientsInRecipe
+--@RecipeId int
+--as
+--begin
+--set nocount on;
+
+--select
+--	Ingredients.Id,
+--	Ingredients.Name,
+--	Ingredients.Type,
+--	IngredientsInRecipe.Amount,
+--	IngredientsInRecipe.RecipeId,
+--	IngredientsInRecipe.Unit
+--from IngredientsInRecipe
+--inner join Ingredients on IngredientsInRecipe.IngredientId = Ingredients.Id 
+--where RecipeId = @RecipeId
+
+--end
+
+
 --create proc dbo.GetIngredientsInRecipes
 --as
 --begin

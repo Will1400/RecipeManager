@@ -54,20 +54,39 @@ namespace DataAccess
 
         public Recipe GetRecipe(int id)
         {
-            DataRow row = ExecuteQuery($"exec dbo.GetRecipe {id}").Rows[0];
-
-            return new Recipe()
+            DataRow recipeRow = ExecuteQuery($"exec dbo.GetRecipe {id}").Rows[0];
+            Recipe recipe = new Recipe()
             {
-                Id = (int)row["Id"],
-                Name = (string)row["Name"],
-                Description = (string)row["Description"]
+                Id = (int)recipeRow["Id"],
+                Name = (string)recipeRow["Name"],
+                Description = (string)recipeRow["Description"],
+                Ingredients = new List<Ingredient>()
             };
+
+            // Placed after creation of recipe for easier id access
+            DataTable ingredientsTable = ExecuteQuery($"exec dbo.GetRecipe {recipe.Id}");
+
+            foreach (DataRow row in ingredientsTable.Rows)
+            {
+                Enum.TryParse((string)row["Unit"], out Unit unit); // Convert string to unit
+                recipe.Ingredients.Add(new Ingredient()
+                {
+                    Id = (int)row["Id"],
+                    RecipeId = (int)row["RecipeId"],
+                    Name = (string)row["Name"],
+                    Type = (IngredientType)(int)row["Type"],
+                    Unit = unit,
+                    Amount = (int)row["Amount"]
+                });
+            }
+
+            return recipe;
         }
 
         public int NewRecipe(Recipe recipe)
         {
             return ExecuteNonQueryScalar($"exec dbo.NewRecipe '{recipe.Name}', '{recipe.Description}'");
-        } 
+        }
 
         public int UpdateRecipe(Recipe recipe)
         {
