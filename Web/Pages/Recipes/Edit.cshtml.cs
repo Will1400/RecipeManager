@@ -16,14 +16,10 @@ namespace Web.Pages.Recipes
         RecipeRepository recipeRepository = new RecipeRepository();
         IngredientRepository ingredientRepository = new IngredientRepository();
 
-        public SelectList Ingredients { get; set; }
 
         [BindProperty]
         public Recipe Recipe { get; set; }
         
-        [BindProperty]
-        public Ingredient NewIngredient { get; set; }
-
 
         public void OnGet()
         {
