@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+@model Web.Pages.Recipes.EditModel
+@using Entities
+@{
+    ViewData["Title"] = $"Edit {Model.Recipe.Name}";
+}
+
+<h1>Edit @Model.Recipe.Name</h1>
+
+
+<form method="post">
+    <input asp-for="Recipe.Id" type="hidden" />
+    <div class="form-group">
+        <label asp-for="Recipe.Name"></label>
+        <input asp-for="Recipe.Name" />
+        <span asp-validation-for="Recipe.Name"></span>
+    </div>
+    <label asp-for="Recipe.Description"></label> @*So the label is above the textarea*@
+    <div class="form-group ">
+        <textarea asp-for="Recipe.Description"></textarea>
+        <span asp-validation-for="Recipe.Description"></span>
+    </div>
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+</form>
+
+
+<h2>Ingredients</h2>
+<a asp-page="/Recipes/AddIngredients" asp-route-id="@Model.Recipe.Id">Add Ingredients</a>
+
+<form method="post" asp-page-handler="UpdateIngredients">
+    <input type="submit" value="Update Ingredients" class="btn btn-danger" />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Unit</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Recipe.Ingredients)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Unit)</td>
+                    <td>@item.Amount</td>
+                    @*<td>
+                            <a asp-page="/Recipes/Edit">Remove</a>
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
