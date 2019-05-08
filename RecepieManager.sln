@@ -5,6 +5,15 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{8912EEA4-D591-4294-91D3-266167055A8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{3B8C03C8-BA46-4F8F-B816-8848852349EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{1AA64269-8B15-497F-AB5C-64338851FF36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DBC20F6-B15F-4E27-A93C-F16889FAC4B8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +24,14 @@ Global
 		{8912EEA4-D591-4294-91D3-266167055A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8912EEA4-D591-4294-91D3-266167055A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8912EEA4-D591-4294-91D3-266167055A8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8C03C8-BA46-4F8F-B816-8848852349EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8C03C8-BA46-4F8F-B816-8848852349EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8C03C8-BA46-4F8F-B816-8848852349EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8C03C8-BA46-4F8F-B816-8848852349EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA64269-8B15-497F-AB5C-64338851FF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA64269-8B15-497F-AB5C-64338851FF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA64269-8B15-497F-AB5C-64338851FF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA64269-8B15-497F-AB5C-64338851FF36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
