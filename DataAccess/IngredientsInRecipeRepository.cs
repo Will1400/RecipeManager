@@ -35,9 +35,9 @@ namespace DataAccess
                 return 0;
 
             int rowsAffected = 0;
+
             // Remove all ingredients without updates
             List<Ingredient> existingIngredients = recipeRepository.GetRecipe(ingredients[0].RecipeId).Ingredients;
-
             existingIngredients.ForEach(x => ingredients.RemoveAll(i => i.Equals(x)));
 
             foreach (Ingredient ingredient in ingredients)

@@ -12,7 +12,7 @@ namespace Entities
         private string name;
         private int amount;
         private IngredientType type;
-        private Unit unit;
+        private Unit unit = (Unit)2;
 
         [EnumDataType(typeof(Unit), ErrorMessage = "Unit must be a valid Unit")]
         public Unit Unit
@@ -86,6 +86,10 @@ namespace Entities
 
 
             return true;
+        }
+        public override int GetHashCode()
+        {
+            return this.id.GetHashCode();
         }
     }
 }
