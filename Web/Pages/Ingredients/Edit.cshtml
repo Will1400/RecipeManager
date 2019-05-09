@@ -11,15 +11,15 @@
     <input asp-for="Ingredient.Id" type="hidden" />
 
     <div class="form-group">
-        <label asp-for="Ingredient.Name"></label>
-        <input asp-for="Ingredient.Name" />
+        <label asp-for="Ingredient.Name" class="col-form-label"></label>
+        <input asp-for="Ingredient.Name" class="form-control"/>
         <span asp-validation-for="Ingredient.Name"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Ingredient.Type"></label>
-        <select asp-for="Ingredient.Type" asp-items="Html.GetEnumSelectList<IngredientType>()"></select>
+        <label asp-for="Ingredient.Type" class="col-form-label"></label>
+        <select asp-for="Ingredient.Type" asp-items="Html.GetEnumSelectList<IngredientType>()" class="form-control"></select>
         <span asp-validation-for="Ingredient.Type"></span>
     </div>
 
-    <input type="submit" value="Save Changes" />
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
 </form>

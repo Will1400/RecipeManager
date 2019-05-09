@@ -12,11 +12,11 @@
     <input asp-for="Recipe.Id" type="hidden" readonly />
     <div class="form-group">
         <label class="col-form-label" asp-for="Recipe.Name"></label>
-        <input asp-for="Recipe.Name" class="form-control"/>
+        <input asp-for="Recipe.Name" class="form-control" />
         <span asp-validation-for="Recipe.Name"></span>
     </div>
-    <div class="form-group ">
-    <label asp-for="Recipe.Description" class="col-form-label"></label>
+    <div class="form-group">
+        <label asp-for="Recipe.Description" class="col-form-label"></label>
         <textarea asp-for="Recipe.Description" class="form-control"></textarea>
         <span asp-validation-for="Recipe.Description"></span>
     </div>
@@ -28,7 +28,7 @@
 <a asp-page="/Recipes/AddIngredients" asp-route-id="@Model.Recipe.Id">Add Ingredients</a>
 
 <form method="post" asp-page-handler="UpdateIngredients">
-    <input type="submit" value="Update Ingredients" class="btn btn-outline-dark"  style="margin-top: 10px"/>
+    <input type="submit" value="Update Ingredients" class="btn btn-outline-dark" style="margin-top: 10px" />
     <table class="table">
         <thead>
             <tr>

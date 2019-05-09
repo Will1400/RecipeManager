@@ -10,15 +10,15 @@
 <h4 class="text-danger">Warning! <br /> @Model.Ingredient.Name Will be deleted from ingredients AND any recipes</h4>
 
 <form method="post">
-    <input asp-for="Ingredient.Id" type="hidden" />
+    <input asp-for="Ingredient.Id" type="hidden" readonly/>
 
     <div class="form-group">
         <label>Name: @Model.Ingredient.Name</label>
-        <input asp-for="Ingredient.Name" type="hidden"/>
+        <input asp-for="Ingredient.Name" type="hidden" readonly/>
     </div>
     <div class="form-group">
         <label>Type: @Model.Ingredient.Type</label>
-        <input asp-for="Ingredient.Type" type="hidden"/>
+        <input asp-for="Ingredient.Type" type="hidden" readonly/>
     </div>
 
     <input type="submit" value="Delete" class="btn btn-danger"/>
