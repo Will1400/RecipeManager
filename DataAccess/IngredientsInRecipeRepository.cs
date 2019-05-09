@@ -12,7 +12,7 @@ namespace DataAccess
             int rowsAffected = 0;
             foreach (Ingredient ingredient in ingredients)
             {
-                rowsAffected += ExecuteNonQuery($"exec dbo.AddNewIngredientToRecipe {ingredient.Id}, {recipeId}, {ingredient.Amount}, '{ingredient.Unit}'");
+                rowsAffected += ExecuteNonQuery($"exec dbo.AddNewIngredientToRecipe {ingredient.Id}, {recipeId}, {ingredient.Amount}, '{(int)ingredient.Unit}'");
             }
             return rowsAffected;
         }

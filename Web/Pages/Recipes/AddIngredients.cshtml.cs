@@ -36,18 +36,22 @@ namespace Web.Pages.Recipes
 
         public IActionResult OnPost(List<Ingredient> ingredients)
         {
-            int.TryParse((string)RouteData.Values["Id"], out int id);
-            List<string> ids = Request.Form["IngredientId"].ToList();
-
-            foreach (Ingredient item in ingredients)
+            if (ModelState.IsValid)
             {
-                if (!ids.Contains(item.Id.ToString()))
-                    Ingredients.Remove(item);
+                int.TryParse((string)RouteData.Values["Id"], out int id);
+                List<string> ids = Request.Form["IngredientId"].ToList();
+
+                foreach (Ingredient item in ingredients)
+                {
+                    if (!ids.Contains(item.Id.ToString()))
+                        Ingredients.Remove(item);
+                }
+
+                ingredientsInRecipeRepository.AddNewIngredientsInRecipe(id, Ingredients);
+
+                return RedirectToPage("/Recipes/Edit", new { Id = id });
             }
-
-            ingredientsInRecipeRepository.AddNewIngredientsInRecipe(id, Ingredients);
-
-            return RedirectToPage("/Recipes/Edit", new { Id = id });
+            return Page();
         }
     }
 }

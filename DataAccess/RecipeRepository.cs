@@ -64,7 +64,7 @@ namespace DataAccess
             };
 
             // Placed after creation of recipe for easier id access
-            DataTable ingredientsTable = ExecuteQuery($"exec dbo.GetRecipe {recipe.Id}");
+            DataTable ingredientsTable = ExecuteQuery($"exec dbo.GetIngredientsInRecipe {recipe.Id}");
 
             foreach (DataRow row in ingredientsTable.Rows)
             {
