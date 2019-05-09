@@ -62,5 +62,30 @@ namespace Entities
                 return true;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            Ingredient ingredient;
+
+            if (obj is Ingredient)
+                ingredient = (Ingredient)obj;
+            else
+                return false;
+
+            if (ingredient.id != id)
+                return false;
+
+            if (ingredient.Name != Name)
+                return false;
+
+            if (ingredient.Amount != amount)
+                return false;
+
+            if (ingredient.Unit != unit)
+                return false;
+
+
+            return true;
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace DataAccess
 
             foreach (DataRow row in table.Rows)
             {
+                Enum.TryParse((string)row["Unit"], out Unit unit); // Convert string to unit
                 ingredients.Add(new Ingredient()
                 {
                     Id = (int)row["Id"],
@@ -38,7 +39,7 @@ namespace DataAccess
                     Name = (string)row["Name"],
                     Type = (IngredientType)(int)row["Type"],
                     Amount = (int)row["Amount"],
-                    Unit = (Unit)(int)row["Unit"]
+                    Unit = unit
                 });
             }
 
