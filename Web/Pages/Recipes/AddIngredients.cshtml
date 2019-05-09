@@ -7,22 +7,22 @@
 
 <h1>Add Ingredients to @Model.Recipe.Name</h1>
 
-<h2>Filter</h2>
-<form style="display: flex">
+<h2 style="margin-top:20px;">Filter</h2>
+<form style="display: flex; margin-bottom:20px">
     <div class="form-group">
         <label class="col-form-label">Name</label>
         <input asp-for="SearchName" class="form-control" style="display: inline-block; width:200px;" />
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-left: 20px">
         <label class="col-form-label">Type</label>
-        <select asp-for="SearchType" asp-items="@Html.GetEnumSelectList<IngredientType>()">
+        <select asp-for="SearchType" asp-items="@Html.GetEnumSelectList<IngredientType>()" class="form-control" style="display:inline-block; width: 200px">
             <option value="All">All</option>
         </select>
     </div>
     <input type="submit" value="Filter" class="btn btn-outline-primary" style="height:40px; margin-left: 10px" />
 </form>
 <form method="post">
-    <input type="submit" value="Add" class="btn btn-primary" />
+    <input type="submit" value="Add Ingredients" class="btn btn-primary" />
     <table class="table">
         <thead>
             <tr>
@@ -43,16 +43,14 @@
                             <span class="checkmark"></span>
                         </label>
 
+                        @* Ids that are needed but shouldnt be changed *@
                         <input asp-for="Ingredients[i].Id" type="hidden" />
                         <input asp-for="Ingredients[i].RecipeId" value="@Model.Recipe.Id" type="hidden" />
-                        <span asp-validation-for="Ingredients[i].RecipeId"></span>
                     </td>
                     <td><input asp-for="Ingredients[i].Name" readonly class="form-control-plaintext" /></td>
                     <td><input asp-for="Ingredients[i].Type" readonly class="form-control-plaintext" /></td>
                     <td>
-                        <select asp-for="Ingredients[i].Unit" asp-items="@Html.GetEnumSelectList<Unit>()">
-                            <option value="-1">Select Unit</option>
-                        </select>
+                        <select asp-for="Ingredients[i].Unit" asp-items="@Html.GetEnumSelectList<Unit>()"></select>
                         <span asp-validation-for="Ingredients[i].Unit"></span>
                     </td>
                     <td>

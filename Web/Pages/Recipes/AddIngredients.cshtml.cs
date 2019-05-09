@@ -53,7 +53,6 @@ namespace Web.Pages.Recipes
                     Ingredients.RemoveAll(i => i.Type != type);
                 }
             }
-
         }
 
 

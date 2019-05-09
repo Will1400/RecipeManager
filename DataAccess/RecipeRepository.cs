@@ -29,11 +29,8 @@ namespace DataAccess
                 // Remove added ingredients
                 ingredients = ingredients.Except(recipe.Ingredients).ToList();
             }
-            //recipes.ForEach(r => r.Ingredients.AddRange(ingredients.Where(i => r.Id == i.RecipeId))); might be slower since it dosnt remove ingredients after adding them
-
             return recipes;
         }
-
 
         public List<Recipe> GetAllRecipes()
         {

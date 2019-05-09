@@ -41,7 +41,7 @@ namespace Web.Pages.Recipes
             return RedirectToPage("/Recipes/Edit", new { Id = id });
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost() // Update the recipe details
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +53,7 @@ namespace Web.Pages.Recipes
 
         public IActionResult OnPostUpdateIngredients(List<Ingredient> ingredients)
         {
-            ModelState.Remove("Name");
+            ModelState.Remove("Name"); //Always invalid since it's not bound to the form
             if (ModelState.IsValid)
             {
                 ingredientsInRecipeRepository.UpdateIngredient(ingredients);
