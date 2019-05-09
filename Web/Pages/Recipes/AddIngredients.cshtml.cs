@@ -39,11 +39,8 @@ namespace Web.Pages.Recipes
                 int.TryParse((string)RouteData.Values["Id"], out int id);
                 List<string> ids = Request.Form["IngredientId"].ToList();
 
-                foreach (Ingredient item in ingredients)
-                {
-                    if (!ids.Contains(item.Id.ToString()))
-                        Ingredients.Remove(item);
-                }
+                // Remove all non checked ingredients
+                Ingredients.RemoveAll(x => !ids.Contains(x.Id.ToString()));
 
                 ingredientsInRecipeRepository.AddNewIngredientsInRecipe(id, Ingredients);
 

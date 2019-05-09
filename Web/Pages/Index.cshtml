@@ -4,6 +4,15 @@
     ViewData["Title"] = "Home";
 }
 
+<h2>Filter</h2>
+<form>
+    <select asp-for="FilterType">
+        <option value="-1">Select type</option>
+        <option value="0">Non Vegan</option>
+        <option value="1">Vegan</option>
+    </select>
+    <input type="submit" value="Filter" class="btn btn-outline-primary"/>
+</form>
 
 <div class="list-group">
     @foreach (var item in Model.Recipes)
