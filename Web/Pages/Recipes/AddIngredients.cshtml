@@ -1,0 +1,44 @@
+﻿@page "{id:int}"
+@model Web.Pages.Recipes.AddIngredientsModel
+@using Entities;
+@{
+    ViewData["Title"] = "Add Ingredients";
+}
+
+<h1>Add Ingredients to @Model.Recipe.Name</h1>
+
+<form method="post">
+    <input type="submit" value="Add" />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Add</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Unit</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Ingredients.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="IngredientId" value="@Model.Ingredients[i].Id" />
+
+                        <input asp-for="Ingredients[i].Id" type="hidden" />
+                        <input asp-for="Ingredients[i].RecipeId" value="@Model.Recipe.Id" type="hidden" />
+                    </td>
+                    <td>@Model.Ingredients[i].Name</td>
+                    <td>@Model.Ingredients[i].Type</td>
+                    <td>
+                        <select asp-for="Ingredients[i].Unit" asp-items="@Html.GetEnumSelectList<Unit>()">
+                            <option value="-1">Select Unit</option>
+                        </select>
+                    </td>
+                    <td><input asp-for="Ingredients[i].Amount" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
