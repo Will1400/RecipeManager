@@ -48,5 +48,16 @@ namespace DataAccess
             }
             return ds.Tables[0];
         }
+
+        public void BulkInsert(DataTable table, string destination)
+        {
+
+            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(conString))
+            {
+                bulkCopy.BulkCopyTimeout = 600;
+                bulkCopy.DestinationTableName = destination;
+                bulkCopy.WriteToServer(table);
+            }
+        }
     }
 }
