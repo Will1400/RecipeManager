@@ -21,7 +21,7 @@ namespace Web.Pages.Recipes
         [BindProperty]
         public Recipe Recipe { get; set; }
 
-        
+
         [BindProperty]
         public List<Ingredient> Ingredients { get; set; } /*Used to update ingredients*/
 
@@ -38,7 +38,7 @@ namespace Web.Pages.Recipes
 
             ingredientsInRecipeRepository.RemoveIngredientFromRecipe(id, ingredientId);
 
-            return RedirectToPage("/Recipes/Edit", new { Id = id});
+            return RedirectToPage("/Recipes/Edit", new { Id = id });
         }
 
         public IActionResult OnPost()
@@ -55,12 +55,8 @@ namespace Web.Pages.Recipes
         {
             if (ModelState.IsValid)
             {
-                foreach (Ingredient item in ingredients)
-                {
-                    ingredientsInRecipeRepository.UpdateIngredient(item);
-                    return Redirect("/Recipes/Index");
-                }
-
+                ingredientsInRecipeRepository.UpdateIngredient(ingredients);
+                return Redirect("/Recipes/Index");
             }
             return Page();
         }

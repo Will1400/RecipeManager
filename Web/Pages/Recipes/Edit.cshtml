@@ -24,11 +24,11 @@
 </form>
 
 
-<h2>Ingredients</h2>
+<h2 style="margin-top: 40px">Ingredients</h2>
 <a asp-page="/Recipes/AddIngredients" asp-route-id="@Model.Recipe.Id">Add Ingredients</a>
 
 <form method="post" asp-page-handler="UpdateIngredients">
-    <input type="submit" value="Update Ingredients" class="btn btn-danger" />
+    <input type="submit" value="Update Ingredients" class="btn btn-outline-warning" />
     <table class="table">
         <thead>
             <tr>
@@ -52,7 +52,7 @@
                         <input asp-for="@Model.Ingredients[i].RecipeId" type="hidden" readonly />
                     </td>
                     <td>
-                        <a asp-page="/Recipes/Edit" asp-page-handler="RemoveIngredient" asp-route-ingredientId="@Model.Ingredients[i].Id">Remove</a>
+                        <a class="text-danger" asp-page="/Recipes/Edit" asp-page-handler="RemoveIngredient" asp-route-ingredientId="@Model.Ingredients[i].Id">Remove</a>
                     </td>
                 </tr>
             }
