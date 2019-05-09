@@ -8,7 +8,7 @@
 <div class="list-group">
     @foreach (var item in Model.Recipes)
     {
-        <div class="list-group-item">
+        <div class="list-group-item" style="margin-top: 10px">
             <h2>@item.Name</h2>
             <p>@item.Description</p>
             <a asp-page="/Recipes/Details" asp-route-id="@item.Id">View Recipe</a>
