@@ -1,0 +1,8 @@
+﻿@page "{code:int}"
+@model Web.Pages.Errors.DefaultModel
+@{
+    ViewData["Title"] = $"Error {Model.Code}";
+}
+
+<h1>Error @Model.Code</h1>
+<h2>@Model.ErrorMessage</h2>
