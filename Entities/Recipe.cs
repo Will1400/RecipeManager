@@ -34,5 +34,19 @@ namespace Entities
             get { return ingredients; }
             set { ingredients = value; }
         }
+
+        public bool IsVegetarian
+        {
+            get
+            {
+                foreach (Ingredient item in ingredients)
+                {
+                    if (!item.IsVegetarian)
+                        return false;
+                }
+
+                return true;
+            }
+        }
     }
 }

@@ -48,5 +48,19 @@ namespace Entities
             get { return id; }
             set { id = value; }
         }
+
+        public bool IsVegetarian
+        {
+            get
+            {
+                if (type != IngredientType.Beef ||
+                    type != IngredientType.Pork ||
+                    type != IngredientType.Dairy)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
     }
 }
