@@ -26,9 +26,10 @@ namespace DataAccess
                         recipe.Ingredients.Add(ingredient);
                     }
                 }
-                // Remove Ingredients already in a recipe
-                //ingredients = ingredients.Where(x => x.RecipeId == recipe.Id).ToList();
+                // Remove added ingredients
+                ingredients = ingredients.Except(recipe.Ingredients).ToList();
             }
+            //recipes.ForEach(r => r.Ingredients.AddRange(ingredients.Where(i => r.Id == i.RecipeId))); might be slower since it dosnt remove ingredients after adding them
 
             return recipes;
         }
@@ -79,7 +80,6 @@ namespace DataAccess
                     Amount = (int)row["Amount"]
                 });
             }
-
             return recipe;
         }
 
