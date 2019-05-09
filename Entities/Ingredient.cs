@@ -14,7 +14,7 @@ namespace Entities
         private IngredientType type;
         private Unit unit;
 
-        [EnumDataType(typeof(IngredientType), ErrorMessage = "Unit must be a valid Unit")]
+        [EnumDataType(typeof(Unit), ErrorMessage = "Unit must be a valid Unit")]
         public Unit Unit
         {
             get { return unit; }

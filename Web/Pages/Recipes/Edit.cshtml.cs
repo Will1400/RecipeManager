@@ -53,11 +53,13 @@ namespace Web.Pages.Recipes
 
         public IActionResult OnPostUpdateIngredients(List<Ingredient> ingredients)
         {
+            ModelState.Remove("Name");
             if (ModelState.IsValid)
             {
                 ingredientsInRecipeRepository.UpdateIngredient(ingredients);
                 return Redirect("/Recipes/Index");
             }
+            OnGet();
             return Page();
         }
     }
