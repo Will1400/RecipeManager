@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Entities;
 using DataAccess;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Web.Pages.Recipes
 {
@@ -15,22 +16,46 @@ namespace Web.Pages.Recipes
         RecipeRepository recipeRepository = new RecipeRepository();
         IngredientsInRecipeRepository ingredientsInRecipeRepository = new IngredientsInRecipeRepository();
 
+        public Recipe Recipe { get; set; }
+
         [BindProperty]
         public List<Ingredient> Ingredients { get; set; }
 
-
-        public Recipe Recipe { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchName { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchType { get; set; }
 
         public void OnGet()
         {
             int.TryParse((string)RouteData.Values["Id"], out int id);
             Recipe = recipeRepository.GetRecipe(id);
 
+
             Ingredients = ingredientRepository.GetAllIngredients();
 
             // Remove ingredients already in the recipe
             Recipe.Ingredients.ForEach(x => Ingredients.RemoveAll(i => i.Id == x.Id));
+
+
+            // Search Filtering
+            if (!string.IsNullOrEmpty(SearchName) || !string.IsNullOrEmpty(SearchType))
+            {
+                if (!string.IsNullOrEmpty(SearchName))
+                {
+                    SearchName.Trim();
+                    Ingredients.RemoveAll(i => !i.Name.ToLower().Contains(SearchName.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(SearchType) && SearchType.ToLower() != "all")
+                {
+                    int.TryParse(SearchType, out int typeId);
+                    IngredientType type = (IngredientType)typeId;
+                    Ingredients.RemoveAll(i => i.Type != type);
+                }
+            }
+
         }
+
 
         public IActionResult OnPost(List<Ingredient> ingredients)
         {
