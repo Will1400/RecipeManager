@@ -22,9 +22,14 @@ namespace DataAccess
             return ExecuteNonQuery($"exec dbo.RemoveIngredientFromRecipe {recipeId}, {ingredientId}");
         }
 
-        public int UpdateIngredient(Ingredient ingredient)
+        public int UpdateIngredient(List<Ingredient> ingredients)
         {
-            return ExecuteNonQuery($"exec dbo.UpdateIngredientInRecipe  {ingredient.Id}, {ingredient.RecipeId}, {ingredient.Amount}, '{(int)ingredient.Unit}'");
+            int rowsAffected = 0;
+            foreach (Ingredient ingredient in ingredients)
+            {
+                 rowsAffected += ExecuteNonQuery($"exec dbo.UpdateIngredientInRecipe  {ingredient.Id}, {ingredient.RecipeId}, {ingredient.Amount}, '{(int)ingredient.Unit}'");
+            }
+            return rowsAffected;
         }
     }
 }
