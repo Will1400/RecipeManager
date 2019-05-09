@@ -16,23 +16,26 @@ namespace Web.Pages
         public List<Recipe> Recipes { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public int FilterType { get; set; } = -1;
+        public string FilterType { get; set; } = "all";
 
         public void OnGet()
         {
-            Recipes = recipeRepository.GetAllRecipes();
+            FilterType = FilterType.ToLower();
 
-            if (FilterType != -1)
+            if (FilterType != "all")
             {
-                if (FilterType == 0)
+                Recipes = recipeRepository.GetAllRecipesWithIngredients();
+                if (FilterType == "nonvegan")
                 {
                     Recipes.RemoveAll(x => x.IsVegetarian);
                 }
-                else if (FilterType == 1)
+                else if (FilterType == "vegan")
                 {
                     Recipes.RemoveAll(x => !x.IsVegetarian);
                 }
+                return;
             }
+            Recipes = recipeRepository.GetAllRecipes();
         }
     }
 }

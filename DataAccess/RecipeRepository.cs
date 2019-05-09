@@ -27,7 +27,7 @@ namespace DataAccess
                     }
                 }
                 // Remove Ingredients already in a recipe
-                ingredients = ingredients.Where(x => x.RecipeId == recipe.Id).ToList();
+                //ingredients = ingredients.Where(x => x.RecipeId == recipe.Id).ToList();
             }
 
             return recipes;

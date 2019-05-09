@@ -39,6 +39,9 @@ namespace Entities
         {
             get
             {
+                if (ingredients is null)
+                    return false;
+
                 foreach (Ingredient item in ingredients)
                 {
                     if (!item.IsVegetarian)

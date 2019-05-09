@@ -53,9 +53,9 @@ namespace Entities
         {
             get
             {
-                if (type != IngredientType.Beef ||
-                    type != IngredientType.Pork ||
-                    type != IngredientType.Dairy)
+                if (type == IngredientType.Beef ||
+                    type == IngredientType.Pork ||
+                    type == IngredientType.Dairy)
                 {
                     return false;
                 }
