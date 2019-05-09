@@ -142,6 +142,21 @@
 --end
 
 
+--create proc dbo.UpdateIngredientInRecipe
+--@IngredientId int,
+--@RecipeId int,
+--@Amount int,
+--@Unit int
+--as
+--begin
+
+--update IngredientsInRecipe
+--set Amount = @Amount, Unit = @Unit
+--where IngredientId = @IngredientId and RecipeId = @RecipeId
+
+--end
+
+
 --create proc dbo.RemoveIngredientFromRecipe
 --@RecipeId int,
 --@IngredientId int

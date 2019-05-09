@@ -9,7 +9,7 @@
 
 
 <form method="post">
-    <input asp-for="Recipe.Id" type="hidden" readonly/>
+    <input asp-for="Recipe.Id" type="hidden" readonly />
     <div class="form-group">
         <label asp-for="Recipe.Name"></label>
         <input asp-for="Recipe.Name" />
@@ -39,16 +39,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Recipe.Ingredients)
+            @for (int i = 0; i < Model.Ingredients.Count; i++)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Unit)</td>
-                    <td>@item.Amount</td>
-                    @*<td>
-                            <a asp-page="/Recipes/Edit">Remove</a>
-                        </td>*@
+                    <td>@Model.Ingredients[i].Name</td>
+                    <td>@Html.DisplayFor(modelItem => Model.Ingredients[i].Type)</td>
+                    <td><select asp-for="@Model.Ingredients[i].Unit" asp-items="@Html.GetEnumSelectList<Unit>()"></select></td>
+                    <td>
+                        <input asp-for="@Model.Ingredients[i].Amount" />
+
+                        <input asp-for="@Model.Ingredients[i].Id" type="hidden" readonly />
+                        <input asp-for="@Model.Ingredients[i].RecipeId" type="hidden" readonly />
+                    </td>
+                    <td>
+                        <a asp-page="/Recipes/Edit" asp-page-handler="RemoveIngredient" asp-route-ingredientId="@Model.Ingredients[i].Id">Remove</a>
+                    </td>
                 </tr>
             }
         </tbody>

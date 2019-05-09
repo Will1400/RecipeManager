@@ -21,5 +21,10 @@ namespace DataAccess
         {
             return ExecuteNonQuery($"exec dbo.RemoveIngredientFromRecipe {recipeId}, {ingredientId}");
         }
+
+        public int UpdateIngredient(Ingredient ingredient)
+        {
+            return ExecuteNonQuery($"exec dbo.UpdateIngredientInRecipe  {ingredient.Id}, {ingredient.RecipeId}, {ingredient.Amount}, '{(int)ingredient.Unit}'");
+        }
     }
 }
