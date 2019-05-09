@@ -28,10 +28,8 @@ namespace Web.Pages.Recipes
 
             Ingredients = ingredientRepository.GetAllIngredients();
 
-            foreach (var item in Recipe.Ingredients)
-            {
-                Ingredients.Remove(Ingredients.First(x => x.Id == item.Id));
-            }
+            // Remove ingredients already in the recipe
+            Recipe.Ingredients.ForEach(x => Ingredients.RemoveAll(i => i.Id == x.Id));
         }
 
         public IActionResult OnPost(List<Ingredient> ingredients)
