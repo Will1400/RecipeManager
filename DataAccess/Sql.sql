@@ -1,12 +1,12 @@
 ﻿--create table Recipes(
 --	Id int not null primary key identity(1,1),
---	Name varchar(max) not null,
+--	Name varchar(300) not null,
 --	Description varchar(max)
 --);
 
 --create table Ingredients(
 --	Id int not null primary key identity(1,1),
---	Name varchar(max) not null,
+--	Name varchar(100) not null,
 --	Type int not null
 --);
 

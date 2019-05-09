@@ -14,13 +14,13 @@ namespace Entities
         private IngredientType type;
         private Unit unit;
 
-
+        [EnumDataType(typeof(IngredientType), ErrorMessage = "Unit must be a valid Unit")]
         public Unit Unit
         {
             get { return unit; }
             set { unit = value; }
         }
-        [Required, EnumDataType(typeof(IngredientType), ErrorMessage = "Unit must be chosen")]
+        [Required, EnumDataType(typeof(IngredientType), ErrorMessage = "IngredientType must be chosen")]
         public IngredientType Type
         {
             get { return type; }
@@ -32,7 +32,7 @@ namespace Entities
             get { return amount; }
             set { amount = value; }
         }
-        [MinLength(2, ErrorMessage = "Name must be atleast 2 characters"), Required]
+        [Required, StringLength(100, MinimumLength = 2, ErrorMessage = "Name must be between 2 and 100 characters")]
         public string Name
         {
             get { return name; }

@@ -18,7 +18,7 @@ namespace Entities
             get { return id; }
             set { id = value; }
         }
-        [MinLength(1), Required]
+        [MinLength(1), MaxLength(300), Required]
         public string Name
         {
             get { return name; }
@@ -44,7 +44,6 @@ namespace Entities
                     if (!item.IsVegetarian)
                         return false;
                 }
-
                 return true;
             }
         }
