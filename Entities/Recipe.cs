@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities
@@ -17,6 +18,7 @@ namespace Entities
             get { return id; }
             set { id = value; }
         }
+        [MinLength(1), Required]
         public string Name
         {
             get { return name; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities
@@ -19,16 +20,19 @@ namespace Entities
             get { return unit; }
             set { unit = value; }
         }
+        [Required, EnumDataType(typeof(Unit), ErrorMessage = "Unit must be chosen")]
         public IngredientType Type
         {
             get { return type; }
             set { type = value; }
         }
+        [Range(1, double.MaxValue, ErrorMessage = "Amount must be above 0")]
         public int Amount
         {
             get { return amount; }
             set { amount = value; }
         }
+        [MinLength(2, ErrorMessage = "Name must be atleast 2 characters"), Required]
         public string Name
         {
             get { return name; }
