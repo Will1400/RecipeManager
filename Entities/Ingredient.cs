@@ -20,13 +20,13 @@ namespace Entities
             get { return unit; }
             set { unit = value; }
         }
-        [Required, EnumDataType(typeof(Unit), ErrorMessage = "Unit must be chosen")]
+        [Required, EnumDataType(typeof(IngredientType), ErrorMessage = "Unit must be chosen")]
         public IngredientType Type
         {
             get { return type; }
             set { type = value; }
         }
-        [Range(1, double.MaxValue, ErrorMessage = "Amount must be above 0")]
+        [Range(0, double.MaxValue, ErrorMessage = "Amount must be above 0")]
         public int Amount
         {
             get { return amount; }
