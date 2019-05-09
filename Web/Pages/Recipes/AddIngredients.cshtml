@@ -8,7 +8,7 @@
 <h1>Add Ingredients to @Model.Recipe.Name</h1>
 
 <form method="post">
-    <input type="submit" value="Add" />
+    <input type="submit" value="Add" class="btn btn-primary"/>
     <table class="table">
         <thead>
             <tr>
@@ -28,15 +28,21 @@
 
                         <input asp-for="Ingredients[i].Id" type="hidden" />
                         <input asp-for="Ingredients[i].RecipeId" value="@Model.Recipe.Id" type="hidden" />
+                        <span asp-validation-for="Ingredients[i].RecipeId"></span>
                     </td>
-                    <td>@Model.Ingredients[i].Name</td>
-                    <td>@Model.Ingredients[i].Type</td>
+                    <td><input asp-for="Ingredients[i].Name" readonly class="form-control-plaintext"/></td>
+                    <td><input asp-for="Ingredients[i].Type" readonly class="form-control-plaintext"/></td>
                     <td>
                         <select asp-for="Ingredients[i].Unit" asp-items="@Html.GetEnumSelectList<Unit>()">
                             <option value="-1">Select Unit</option>
                         </select>
+                        <span asp-validation-for="Ingredients[i].Unit"></span>
                     </td>
-                    <td><input asp-for="Ingredients[i].Amount" /></td>
+                    <td>
+                        <input asp-for="Ingredients[i].Amount" value="1"/>
+                        <span asp-validation-for="Ingredients[i].Amount"></span>
+                    </td>
+
                 </tr>
             }
         </tbody>

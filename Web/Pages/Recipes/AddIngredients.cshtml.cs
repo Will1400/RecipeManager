@@ -51,6 +51,7 @@ namespace Web.Pages.Recipes
 
                 return RedirectToPage("/Recipes/Edit", new { Id = id });
             }
+            OnGet();
             return Page();
         }
     }
